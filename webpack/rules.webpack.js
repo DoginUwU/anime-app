@@ -1,11 +1,12 @@
-module.exports = [
-  {
+module.exports = [{
     test: /\.node$/,
     use: 'node-loader',
   },
   {
     test: /\.(m?js|node)$/,
-    parser: { amd: false },
+    parser: {
+      amd: false
+    },
     use: {
       loader: '@marshallofsound/webpack-asset-relocator-loader',
       options: {
@@ -16,9 +17,7 @@ module.exports = [
   {
     test: /\.(js|ts|tsx)$/,
     exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader'
-    }
+    use: ['babel-loader', 'astroturf/loader'],
   },
   {
     test: /\.(png|jpe?g|gif)$/i,
@@ -26,5 +25,16 @@ module.exports = [
     options: {
       name: '[path][name].[ext]',
     },
-  }
+  },
+  {
+    test: /\.css$/,
+    use: [
+      'style-loader', {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1
+        }
+      }, 'postcss-loader'
+    ],
+  },
 ]

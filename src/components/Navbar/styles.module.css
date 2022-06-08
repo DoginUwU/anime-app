@@ -1,0 +1,28 @@
+.container {
+    @apply sticky h-screen left-0 w-fit p-8 flex flex-col justify-between bg-background;
+}
+
+.logo {
+    @apply w-11 h-11 object-cover rounded-md;
+}
+
+.content {
+    @apply flex flex-col gap-12;
+}
+
+.nav h1 {
+    @apply text-xs font-medium mb-4 uppercase;
+}
+.nav ul {
+    @apply list-none flex flex-col gap-3;
+}
+.nav ul li {
+    @apply text-sm font-light text-white/60 hover:cursor-pointer hover:text-white flex items-center gap-2;
+}
+
+.footer {
+    @apply flex flex-col gap-2 justify-center items-center;
+}
+.footer p {
+    @apply text-[8px] font-light text-white/60;
+}

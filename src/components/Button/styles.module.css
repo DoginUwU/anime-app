@@ -1,0 +1,3 @@
+.button {
+    @apply bg-primary px-9 py-2 rounded-md text-white hover:opacity-90 tracking-wide text-sm;
+}

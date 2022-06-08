@@ -1,0 +1,32 @@
+.list {
+    @apply flex flex-col gap-4;
+}
+.list h1 {
+    @apply text-white/90;
+}
+
+.items {
+    @apply flex gap-2;
+}
+
+.item {
+    @apply flex flex-col rounded-md overflow-hidden hover:cursor-pointer;
+}
+.item:hover img {
+    @apply transform scale-105;
+}
+.item img {
+    @apply w-52 h-28 object-cover transition;
+}
+.itemInfo {
+    @apply bg-white text-black p-4 flex flex-col gap-2 relative;
+}
+.itemInfo h2 {
+    @apply text-sm font-bold text-black;
+}
+.itemInfo p {
+    @apply text-[10px] text-black/90;
+}
+.itemDuration {
+    @apply absolute top-0 text-[8px] -mt-7 bg-background/60 text-white py-1 px-2 rounded-md right-2;
+}

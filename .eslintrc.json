@@ -1,12 +1,11 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
-    "node": true,
-    "jest": true
+    "es2021": true
   },
   "extends": [
-    "standard",
+    "plugin:react/recommended",
+    "airbnb",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -14,15 +13,72 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 12,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "plugins": [
     "react",
-    "prettier",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "rules": {
-    "react/prop-types": "off"
+    "react/no-danger": "off",
+    "linebreak-style": "off",
+    "import/prefer-default-export": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/button-has-type": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "no-unused-vars": [
+      "off",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "[I]\\w+"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
   }
 }

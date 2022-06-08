@@ -1,0 +1,9 @@
+.container {
+    @apply flex items-center gap-4 text-white absolute top-5;
+}
+.container input {
+    @apply bg-transparent outline-none;
+}
+.container svg {
+    @apply text-white/60;
+}

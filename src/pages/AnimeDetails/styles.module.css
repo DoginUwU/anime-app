@@ -1,0 +1,58 @@
+.container {
+    @apply p-8 flex flex-col gap-8 flex-auto;
+}
+
+.header {
+    @apply flex flex-row gap-10 justify-between w-full;
+}
+
+.headerLeft {
+    @apply w-full max-w-xl flex flex-col gap-2;
+}
+.headerLeft h1 {
+    @apply text-3xl font-bold;
+}
+.headerLeft p {
+    @apply text-[10px] text-white/70;
+}
+
+.headerRight {
+    @apply flex flex-col gap-2;
+}
+.headerRight img {
+    @apply w-44 object-cover rounded-md;
+}
+
+.list {
+    @apply flex flex-col mt-8;
+}
+.list h1 {
+    @apply text-white/60 text-sm;
+}
+
+.items {
+    @apply flex flex-col gap-2 mt-4 flex-wrap;
+}
+
+.item {
+    @apply w-full flex overflow-hidden hover:cursor-pointer justify-between items-center bg-white/5 rounded-md;
+    @apply p-2;
+}
+.itemInfo {
+    @apply flex gap-2 items-center pl-2;
+}
+.itemInfo h2 {
+    @apply text-[12px] font-bold text-white;
+}
+.itemInfo p {
+    @apply text-[10px] text-white/90;
+}
+.item button {
+    @apply text-[10px] px-3 py-1 h-fit;
+}
+.item button svg {
+    @apply text-[20px];
+}
+.itemActions {
+    @apply flex flex-row gap-2;
+}

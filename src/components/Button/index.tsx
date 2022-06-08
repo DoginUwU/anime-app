@@ -1,11 +1,8 @@
-import { ReactNode, ButtonHTMLAttributes } from 'react'
+import React, { ButtonHTMLAttributes } from 'react';
+import styles from './styles.module.css';
 
-import { Container } from './styles'
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-type ButtonProps = {
-  children: ReactNode;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+const Button: React.FC<ButtonProps> = (props) => <button className={styles.button} {...props} />;
 
-export function Button (props: ButtonProps) {
-  return <Container type="button" {...props} />
-}
+export default Button;

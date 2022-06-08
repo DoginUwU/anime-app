@@ -1,12 +1,13 @@
-import { GlobalStyle } from './styles/GlobalStyle'
+import Navbar from './components/Navbar';
+import AnimeDetails from './pages/AnimeDetails';
+import Home from './pages/Home';
 
-import { Greetings } from './components/Greetings'
+import './styles/global.css';
 
-export function App() {
-  return (
+export const App = () => (
     <>
-      <GlobalStyle />
-      <Greetings />
+        <Navbar />
+        {/* <Home /> */}
+        <AnimeDetails />
     </>
-  )
-}
+);

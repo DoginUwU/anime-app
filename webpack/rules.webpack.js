@@ -15,9 +15,17 @@ module.exports = [{
     },
   },
   {
-    test: /\.(js|ts|tsx)$/,
+    test: /\.js$/,
+    use: [{
+        loader: 'babel-loader',
+        options: { presets: ['es2015'] }
+    }],
     exclude: /node_modules/,
-    use: ['babel-loader', 'astroturf/loader'],
+  },
+  {
+    test: /\.(ts|tsx)$/,
+    exclude: /node_modules/,
+    use: ['ts-loader'],
   },
   {
     test: /\.(png|jpe?g|gif)$/i,

@@ -6,7 +6,6 @@ import styles from './styles.module.css';
 
 const Home: React.FC = () => (
     <div className={styles.container}>
-        <SearchInput />
         <ContinueWatching />
         <Recomended />
     </div>

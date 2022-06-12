@@ -1,5 +1,6 @@
 import React, { createElement } from 'react';
 import { IconProps } from 'phosphor-react';
+import { Link } from 'react-router-dom';
 import Button from '../Button';
 import styles from './styles.module.css';
 import { menu } from './helper';
@@ -17,10 +18,12 @@ const Navbar: React.FC = () => (
                     <h1>{item.name}</h1>
                     <ul>
                         {item.items.map((subItem) => (
-                            <li>
-                                {createElement<IconProps>(subItem.icon, { weight: 'fill' })}
-                                {subItem.name}
-                            </li>
+                            <Link to={subItem.link} key={subItem.name}>
+                                <li>
+                                    {createElement<IconProps>(subItem.icon, { weight: 'fill' })}
+                                    {subItem.name}
+                                </li>
+                            </Link>
                         ))}
                     </ul>
                 </div>

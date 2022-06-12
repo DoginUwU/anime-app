@@ -1,5 +1,5 @@
 .container {
-    @apply flex items-center gap-4 text-white absolute top-5;
+    @apply flex items-center gap-4 text-white;
 }
 .container input {
     @apply bg-transparent outline-none;

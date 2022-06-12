@@ -1,4 +1,4 @@
-import { app, ipcMain, protocol, session } from 'electron';
+import { app, ipcMain, protocol } from 'electron';
 import { BrowserWindow } from 'electron-acrylic-window';
 
 let mainWindow: BrowserWindow | null;
@@ -41,8 +41,8 @@ protocol.registerSchemesAsPrivileged([
 function createWindow() {
     mainWindow = new BrowserWindow({
         // icon: path.join(assetsPath, 'assets', 'icon.png'),
-        width: 1100,
-        height: 700,
+        width: 1066,
+        height: 685.69,
         transparent: true,
         frame: false,
         backgroundColor: '#14121c',

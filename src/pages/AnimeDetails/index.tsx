@@ -1,68 +1,67 @@
 import { DownloadSimple } from 'phosphor-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { IAnimeGet } from '../../@types/anime';
 import Button from '../../components/Button';
+import { getAnimeByUrl } from '../../libs/api/get/anime';
 import styles from './styles.module.css';
 
-const AnimeDetails: React.FC = () => (
-    <div className={styles.container}>
-        <div className={styles.header}>
-            <div className={styles.headerLeft}>
-                <h1>School Live</h1>
-                <p>
-                    Carefree high school junior Yuki Takeya every day looks forward to the School Living Club.
-                    Consisting of the president Yuuri Wakasa, the athletic Kurumi Ebisuzawa, the mature Miki Naoki, the
-                    supervising teacher Megumi Sakura, and club dog Taroumaru, the club prides itself on making the most
-                    of life at school. There is only one rule the club members have to follow: all members must live
-                    their entire lives within school grounds.
-                </p>
-                <div className={styles.list}>
-                    <h1>Season 1</h1>
-                    <div className={styles.items}>
-                        <div className={styles.item}>
-                            <div className={styles.itemInfo}>
-                                <h2>Episode 1</h2>
-                                <p>The jorney beging</p>
+interface ILocationProps {
+    url: string;
+}
+
+const AnimeDetails: React.FC = () => {
+    const { state } = useLocation();
+    const [anime, setAnime] = useState<IAnimeGet>();
+
+    useEffect(() => {
+        if (!state) return;
+        const { url } = state as ILocationProps;
+
+        getAnimeByUrl(url).then(setAnime);
+    }, [state]);
+
+    if (!anime) return null;
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <div className={styles.headerLeft}>
+                    <h1>{anime.title}</h1>
+                    <p>{anime.description}</p>
+                    <div className={styles.list}>
+                        {anime.seasons.map((season) => (
+                            <div key={season.title}>
+                                <h1>{season.title}</h1>
+                                <div className={styles.items}>
+                                    {season.episodes.map((episode) => (
+                                        <div className={styles.item}>
+                                            <div className={styles.itemInfo}>
+                                                <h2>{episode.title}</h2>
+                                                {/* <p>Empty</p> */}
+                                            </div>
+                                            <div className={styles.itemActions}>
+                                                <Button>
+                                                    <DownloadSimple />
+                                                </Button>
+                                                <Link to="/player" state={{ url: episode.url, episode }}>
+                                                    <Button>Watch</Button>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <div className={styles.itemActions}>
-                                <Button>
-                                    <DownloadSimple />
-                                </Button>
-                                <Button>Watch</Button>
-                            </div>
-                        </div>
-                        <div className={styles.item}>
-                            <div className={styles.itemInfo}>
-                                <h2>Episode 2</h2>
-                                <p>K2Gunn</p>
-                            </div>
-                            <div className={styles.itemActions}>
-                                <Button>
-                                    <DownloadSimple />
-                                </Button>
-                                <Button>Watch</Button>
-                            </div>
-                        </div>
-                        <div className={styles.item}>
-                            <div className={styles.itemInfo}>
-                                <h2>Episode 3</h2>
-                                <p>Bahia</p>
-                            </div>
-                            <div className={styles.itemActions}>
-                                <Button>
-                                    <DownloadSimple />
-                                </Button>
-                                <Button>Watch</Button>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
-            </div>
-            <div className={styles.headerRight}>
-                <img src="https://i.pinimg.com/originals/a2/81/93/a281930405ee5ea88ccf6c26a681271f.jpg" alt="" />
-                <Button>Play</Button>
+                <div className={styles.headerRight}>
+                    <img src={anime.image} alt={anime.title} />
+                    <Button>Play</Button>
+                </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 export default AnimeDetails;

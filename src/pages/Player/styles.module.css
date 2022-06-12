@@ -1,0 +1,79 @@
+.container {
+    @apply w-screen h-screen bg-black;
+}
+
+.back {
+    @apply fixed top-0 left-0 z-50 text-white p-8 cursor-pointer;
+}
+
+.container:hover .controls {
+    @apply opacity-100;
+}
+.controls {
+    @apply select-none transition opacity-0 flex items-center justify-between p-4 fixed bottom-0 left-0 right-0 bg-gradient-to-t from-background to-transparent text-white gap-8 z-50;
+}
+.controls h1 {
+    @apply text-white;
+}
+
+.controlsTitle {
+    @apply flex items-center gap-2;
+}
+.controlsTitle img {
+    @apply w-8 h-8 rounded-md object-cover;
+}
+.controlsCommands {
+    @apply flex items-center gap-2;
+}
+.controlsCommands svg {
+    @apply p-2 w-8 h-8 shadow-lg rounded-md cursor-pointer hover:bg-primary hover:text-white transition;
+}
+
+.controlsDuration {
+    @apply flex items-center justify-center gap-3 self-center flex-1;
+}
+.controlsDuration p {
+    @apply text-white w-16;
+}
+
+input[type="range"] {
+    @apply w-full h-full bg-gray-900 border-none rounded-md outline-none appearance-none relative overflow-hidden cursor-pointer;
+}
+input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #a29bfe;
+    margin-top: -1px;
+}
+    
+input[type='range']::-webkit-slider-thumb {
+    width: 1px;
+    -webkit-appearance: none;
+    height: 1px;
+    cursor: ew-resize;
+    box-shadow: -80px 0 0 80px #a29bfe;
+}
+
+.controlsVolume {
+    @apply flex items-center justify-center gap-3 self-center;
+}
+.controlsVolume svg {
+    @apply p-2 w-8 h-8 shadow-lg rounded-md cursor-pointer hover:bg-primary hover:text-white transition;
+}
+
+.controlsOptions {
+    @apply flex items-center justify-center gap-3 self-center;
+}
+.controlsOptions svg {
+    @apply p-2 w-8 h-8 shadow-lg rounded-md cursor-pointer hover:bg-primary hover:text-white transition;
+}
+
+.queue {
+    @apply h-40 overflow-auto fixed bottom-16 right-12 z-50 bg-black rounded-md flex flex-col gap-1 p-2 opacity-0 transition;
+}
+.queue div {
+    @apply w-full flex justify-between items-center cursor-pointer gap-4 hover:bg-primary transition p-2 rounded-md;
+}
+.queue div img {
+    @apply w-4 h-4 rounded-md object-cover;
+}

@@ -6,11 +6,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
       - name: Install dependencies
-        uses: actions/setup-node@v3
         run: npm install
       - name: Build
-        uses: actions/setup-node@v3
         run: npm make --platform win32
       - name: Release
         uses: softprops/action-gh-release@v1

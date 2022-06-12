@@ -44,7 +44,10 @@ const AnimeDetails: React.FC = () => {
                                                 <Button>
                                                     <DownloadSimple />
                                                 </Button>
-                                                <Link to="/player" state={{ url: episode.url, episode }}>
+                                                <Link
+                                                    to="/player"
+                                                    state={{ url: episode.url, episode, episodes: season.episodes }}
+                                                >
                                                     <Button>Watch</Button>
                                                 </Link>
                                             </div>

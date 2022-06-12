@@ -25,9 +25,6 @@
 .controlsCommands {
     @apply flex items-center gap-2;
 }
-.controlsCommands svg {
-    @apply p-2 w-8 h-8 shadow-lg rounded-md cursor-pointer hover:bg-primary hover:text-white transition;
-}
 
 .controlsDuration {
     @apply flex items-center justify-center gap-3 self-center flex-1;
@@ -57,23 +54,27 @@ input[type='range']::-webkit-slider-thumb {
 .controlsVolume {
     @apply flex items-center justify-center gap-3 self-center;
 }
-.controlsVolume svg {
-    @apply p-2 w-8 h-8 shadow-lg rounded-md cursor-pointer hover:bg-primary hover:text-white transition;
-}
 
 .controlsOptions {
     @apply flex items-center justify-center gap-3 self-center;
 }
-.controlsOptions svg {
-    @apply p-2 w-8 h-8 shadow-lg rounded-md cursor-pointer hover:bg-primary hover:text-white transition;
-}
 
 .queue {
-    @apply h-40 overflow-auto fixed bottom-16 right-12 z-50 bg-black rounded-md flex flex-col gap-1 p-2 opacity-0 transition;
+    @apply max-h-40 min-w-[110px] overflow-auto fixed bottom-16 right-12 z-50 bg-black rounded-md flex flex-col gap-1 p-2 transition;
 }
 .queue div {
     @apply w-full flex justify-between items-center cursor-pointer gap-4 hover:bg-primary transition p-2 rounded-md;
 }
+.queue div p {
+    @apply text-white text-[8px];
+}
 .queue div img {
-    @apply w-4 h-4 rounded-md object-cover;
+    @apply w-4 h-4 rounded-md object-cover hidden;
+}
+
+.container svg {
+    @apply p-2 w-8 h-8 shadow-lg rounded-md cursor-pointer hover:bg-primary hover:text-white transition;
+}
+.active {
+    @apply bg-primary text-white;
 }

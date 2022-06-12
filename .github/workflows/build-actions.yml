@@ -1,10 +1,12 @@
 name: build-actions
-on: [push]
+on:
+  push:
+    branches:
+      - master
 jobs:
   build:
     name: Install dependencies
     runs-on: windows-latest
-    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3

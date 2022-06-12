@@ -14,13 +14,8 @@ jobs:
         uses: borales/actions-yarn@v3.0.0
         with:
           cmd: make --platform win32
-      - name: Publish
-        uses: actions/create-release@v1
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          release_name: Release ${{ github.ref }}
-          body: |
-            ## Changelog
-           
-            ${{ steps.build.outputs.changelog }}
-          draft: false
-          prerelease: false
+          files: out/make/squirrel.windows/anime-app-2.0.0 Setup.exe

@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* eslint-disable no-param-reassign */
 import { app, ipcMain, protocol } from 'electron';
 import { BrowserWindow } from 'electron-acrylic-window';
@@ -109,3 +110,5 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+if (require('electron-squirrel-startup')) app.quit();

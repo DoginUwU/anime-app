@@ -13,6 +13,5 @@ jobs:
         run: npm run make --platform win32
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: out/make/squirrel.windows/x64/anime-app-2.0.0 Setup.exe

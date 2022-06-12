@@ -13,7 +13,7 @@ jobs:
       - name: Build
         uses: borales/actions-yarn@v3.0.0
         with:
-          cmd: make
+          cmd: make --platform win32
       - name: Publish
         uses: actions/create-release@v1
         with:

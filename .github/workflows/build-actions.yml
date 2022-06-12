@@ -4,6 +4,7 @@ jobs:
   build:
     name: Install dependencies
     runs-on: windows-latest
+    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
@@ -11,7 +12,11 @@ jobs:
         run: npm install
       - name: Build
         run: npm run make --platform win32
+      - name: Generate Changelog
+        run: echo "# Good things have arrived" > ${{ github.workspace }}-CHANGELOG.txt
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          body_path: ${{ github.workspace }}-CHANGELOG.txt
+          tag_name: 1.0.0
           files: out/make/squirrel.windows/x64/anime-app-2.0.0 Setup.exe

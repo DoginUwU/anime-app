@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { app, ipcMain, protocol } from 'electron';
 import { BrowserWindow } from 'electron-acrylic-window';
 
@@ -73,6 +74,22 @@ async function registerListeners() {
      */
     ipcMain.on('message', (_, message) => {
         console.log(message);
+    });
+
+    ipcMain.on('getEnvironment', (event, name) => {
+        switch (name) {
+            case 'API_URL':
+                if (process.env.NODE_ENV === 'development') {
+                    event.returnValue = 'http://localhost:3333';
+                    break;
+                }
+
+                event.returnValue = 'https://api.example.com';
+                break;
+            default:
+                event.returnValue = undefined;
+                break;
+        }
     });
 }
 

@@ -7,7 +7,7 @@
 }
 
 .items {
-    @apply flex gap-2;
+    @apply flex gap-2 flex-wrap justify-center;
 }
 
 .item {

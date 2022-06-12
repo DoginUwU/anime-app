@@ -13,6 +13,8 @@ export const api = {
         ipcRenderer.send('message', message);
     },
 
+    getEnvironment: (name: string) => ipcRenderer.sendSync('getEnvironment', name),
+
     /**
      * Provide an easier way to listen to events
      */

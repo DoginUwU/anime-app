@@ -85,7 +85,7 @@ async function registerListeners() {
                     break;
                 }
 
-                event.returnValue = 'https://anime-app-back.herokuapp.com';
+                event.returnValue = 'http://144.22.160.67:1521';
                 break;
             default:
                 event.returnValue = undefined;

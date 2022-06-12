@@ -1,0 +1,26 @@
+name: build-actions
+on: [push]
+jobs:
+  build:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install
+      - name: Build
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: make
+      - name: Publish
+        uses: actions/create-release@v1
+        with:
+          release_name: Release ${{ github.ref }}
+          body: |
+            ## Changelog
+           
+            ${{ steps.build.outputs.changelog }}
+          draft: false
+          prerelease: false

@@ -1,12 +1,11 @@
 name: build-actions
-on:
-  push:
-    tags:
-      - '*'
+on: push
+
 jobs:
   build:
     name: Install dependencies
     runs-on: windows-latest
+    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@master
@@ -29,7 +28,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           body_path: ${{ github.workspace }}-CHANGELOG.txt
-          tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           files: |
             out/make/squirrel.windows/x64/anime-app.exe

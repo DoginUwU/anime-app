@@ -2,7 +2,7 @@ name: build-actions
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
 jobs:
   build:
     name: Install dependencies

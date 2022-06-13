@@ -1,0 +1,4 @@
+.item {
+    @apply flex flex-col rounded-md overflow-hidden w-36 h-52 transition;
+    @apply animate-pulse bg-background/50;
+}

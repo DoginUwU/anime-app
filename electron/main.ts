@@ -50,6 +50,7 @@ function createWindow() {
         backgroundColor: '#14121c',
         roundedCorners: true,
         thickFrame: true,
+        resizable: false,
         vibrancy: {
             theme: 'dark',
             effect: 'acrylic',

@@ -7,6 +7,6 @@
 }
 
 .items {
-    @apply flex gap-2 flex-wrap justify-center;
+    @apply flex gap-2 flex-wrap justify-start;
 }
 

@@ -1,0 +1,24 @@
+.container {
+    @apply flex flex-row gap-10 justify-between w-full;
+}
+
+.headerLeft {
+    @apply w-full max-w-xl flex flex-col gap-2;
+}
+.headerLeft h1 {
+    @apply text-3xl font-bold;
+}
+.headerLeft p {
+    @apply text-[10px] text-white/70;
+}
+
+
+.headerRight {
+    @apply flex flex-col gap-2;
+}
+.headerRight img {
+    @apply w-44 object-cover rounded-md;
+}
+.headerRight button {
+    @apply w-full;
+}

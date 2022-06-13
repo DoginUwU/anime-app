@@ -1,4 +1,3 @@
-import { IAnimeGet } from '../../../@types/anime';
 import { ISearchGet, ISearchItem } from '../../../@types/search';
 import { api } from '../axios';
 

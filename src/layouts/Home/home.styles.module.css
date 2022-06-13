@@ -1,0 +1,5 @@
+.titlebar  {
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+    @apply fixed top-0 left-0 w-screen h-8;
+}

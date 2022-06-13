@@ -1,13 +1,12 @@
-.container {
+.list {
     @apply flex flex-col gap-4;
 }
-
-.container h1 {
+.list h1 {
     @apply text-white/90;
 }
 
 .items {
-    @apply flex gap-2 flex-wrap justify-start;
+    @apply flex gap-2;
 }
 
 .item {

@@ -11,12 +11,18 @@ const SearchInput: React.FC = () => {
         setValue(e.target.value);
     };
 
-    useEffect(() => {
-        const delayDebounceFn = setTimeout(() => {
-            if (!value) return;
+    const handleSearch = () => {
+        if (!value) return;
 
-            navigate(`/search/${value}`);
-        }, 1000);
+        navigate(`/search/${value}`);
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') handleSearch();
+    };
+
+    useEffect(() => {
+        const delayDebounceFn = setTimeout(handleSearch, 10000);
 
         return () => clearTimeout(delayDebounceFn);
     }, [value]);
@@ -24,7 +30,13 @@ const SearchInput: React.FC = () => {
     return (
         <div className={styles.container}>
             <MagnifyingGlass />
-            <input type="text" placeholder="Search" value={value} onChange={handleChangeValue} />
+            <input
+                type="text"
+                placeholder="Search"
+                value={value}
+                onChange={handleChangeValue}
+                onKeyDown={handleKeyPress}
+            />
         </div>
     );
 };

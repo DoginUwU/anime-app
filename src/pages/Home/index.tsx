@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchInput from '../../components/SearchInput';
 import ContinueWatching from '../../layouts/Home/ContinueWatching';
 import Recomended from '../../layouts/Home/Recomended';
 import styles from './styles.module.css';

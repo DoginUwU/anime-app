@@ -38,16 +38,12 @@ const AnimeDetails: React.FC = () => {
                                         <div className={styles.item}>
                                             <div className={styles.itemInfo}>
                                                 <h2>{episode.title}</h2>
-                                                {/* <p>Empty</p> */}
                                             </div>
                                             <div className={styles.itemActions}>
                                                 <Button>
                                                     <DownloadSimple />
                                                 </Button>
-                                                <Link
-                                                    to="/player"
-                                                    state={{ url: episode.url, episode, episodes: season.episodes }}
-                                                >
+                                                <Link to="/player" state={{ episode, episodes: season.episodes }}>
                                                     <Button>Watch</Button>
                                                 </Link>
                                             </div>
@@ -60,7 +56,15 @@ const AnimeDetails: React.FC = () => {
                 </div>
                 <div className={styles.headerRight}>
                     <img src={anime.image} alt={anime.title} />
-                    <Button>Play</Button>
+                    <Link
+                        to="/player"
+                        state={{
+                            episode: anime.seasons[0].episodes[0],
+                            episodes: anime.seasons[0].episodes,
+                        }}
+                    >
+                        <Button>Play</Button>
+                    </Link>
                 </div>
             </div>
         </div>

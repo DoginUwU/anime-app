@@ -1,0 +1,9 @@
+.item {
+    @apply flex flex-col rounded-md overflow-hidden hover:cursor-pointer;
+}
+.item:hover img {
+    @apply transform scale-105;
+}
+.item img {
+    @apply w-36 h-52 object-cover transition;
+}

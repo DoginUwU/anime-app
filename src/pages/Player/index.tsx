@@ -9,7 +9,6 @@ import { formatToMMSS } from '../../utils/time';
 import { IAnimeEpisode } from '../../@types/anime';
 
 interface IStateProps {
-    url: string;
     episode: IAnimeEpisode;
     episodes: IAnimeEpisode[];
 }
@@ -31,9 +30,9 @@ const Player: React.FC = () => {
 
     useEffect(() => {
         if (!state) return;
-        const { url, episode: getEpisode, episodes: getEpisodes } = state as IStateProps;
+        const { episode: getEpisode, episodes: getEpisodes } = state as IStateProps;
 
-        setSrc(getWatchSrc(url));
+        setSrc(getWatchSrc(getEpisode.url));
         setEpisode(getEpisode);
         setEpisodes(getEpisodes);
     }, [state]);
@@ -141,7 +140,7 @@ const Player: React.FC = () => {
                     }}
                 >
                     {episodes.map((e) => (
-                        <Link to="/player" state={{ url: e.url, episode: e, episodes }}>
+                        <Link to="/player" state={{ episode: e, episodes }}>
                             <div
                                 key={e.url}
                                 className={classNames({

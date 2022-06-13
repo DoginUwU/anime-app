@@ -1,0 +1,12 @@
+.container {
+    @apply flex flex-col gap-4;
+}
+
+.container h1 {
+    @apply text-white/90;
+}
+
+.items {
+    @apply flex gap-2 flex-wrap justify-center;
+}
+

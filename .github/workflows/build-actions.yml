@@ -1,8 +1,8 @@
 name: build-actions
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*'
 jobs:
   build:
     name: Install dependencies
@@ -20,6 +20,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           body_path: ${{ github.workspace }}-CHANGELOG.txt
-          tag_name: 1.0.0
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           files: |
             out/make/squirrel.windows/x64/anime-app.exe

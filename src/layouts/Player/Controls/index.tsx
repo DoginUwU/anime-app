@@ -15,6 +15,7 @@ interface IControlsProps {
     duration: number;
     volume: number;
     muted: boolean;
+    showing?: boolean;
     onTogglePlay: () => void;
     onGoBack: () => void;
     onSetVolume: (volume: number) => void;
@@ -47,7 +48,12 @@ const Controls: React.FC<IControlsProps> = ({ episode, episodes, ...props }) => 
     };
 
     return (
-        <div className={styles.container}>
+        <div
+            className={styles.container}
+            style={{
+                opacity: props.showing ? 1 : 0,
+            }}
+        >
             <div className={styles.titlebar} />
             <div className={styles.back}>
                 <ArrowLeft size={32} onClick={onGoBack} />

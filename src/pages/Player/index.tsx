@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { createRef, useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { IAnimeEpisode } from '../../@types/anime';
@@ -25,6 +25,8 @@ const Player: React.FC = () => {
     const [muted, setMuted] = useState(false);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [showControls, setShowControls] = useState(false);
+    const timer = useRef<any>();
 
     useEffect(() => {
         if (!state) return;
@@ -65,8 +67,25 @@ const Player: React.FC = () => {
         setLoading(false);
     };
 
+    const disableControlsOnIdle = () => {
+        clearTimeout(timer.current);
+        setShowControls(true);
+
+        timer.current = setTimeout(() => {
+            setShowControls(false);
+        }, 5000);
+    };
+
     return (
-        <div className={styles.container}>
+        <div
+            className={styles.container}
+            onMouseEnter={() => setShowControls(true)}
+            onMouseLeave={() => setShowControls(false)}
+            onMouseMove={disableControlsOnIdle}
+            style={{
+                cursor: showControls ? 'auto' : 'none',
+            }}
+        >
             <ReactPlayer
                 className={styles.player}
                 ref={ref}
@@ -92,6 +111,7 @@ const Player: React.FC = () => {
                     onSetVolume={setVolume}
                     onToggleMute={handleMute}
                     onSetProgress={setProgress}
+                    showing={showControls}
                 />
             )}
             {loading && <Loading />}

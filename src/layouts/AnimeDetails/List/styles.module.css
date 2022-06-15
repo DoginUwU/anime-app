@@ -11,10 +11,10 @@
 
 .item {
     @apply w-full flex overflow-hidden hover:cursor-pointer justify-between items-center bg-white/5 rounded-md;
-    @apply p-2;
+    @apply p-2 relative;
 }
 .itemInfo {
-    @apply flex gap-2 items-center pl-2;
+    @apply flex gap-2 items-center pl-2 z-10;
 }
 .itemInfo h2 {
     @apply text-[12px] font-bold text-white;
@@ -30,4 +30,12 @@
 }
 .itemActions {
     @apply flex flex-row gap-2;
+}
+
+.progress {
+    @apply absolute top-0 left-0 h-full bg-secondary opacity-30 -z-10 -ml-[190px];
+}
+.progress div {
+    @apply absolute top-0 -right-[125px] rotate-90;
+    width: auto!important;
 }

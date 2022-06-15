@@ -17,8 +17,10 @@ module.exports = [{
   {
     test: /\.js$/,
     use: [{
-        loader: 'babel-loader',
-        options: { presets: ['es2015'] }
+      loader: 'babel-loader',
+      options: {
+        presets: ['es2015']
+      }
     }],
     exclude: /node_modules/,
   },
@@ -33,6 +35,15 @@ module.exports = [{
     options: {
       name: '[path][name].[ext]',
     },
+  },
+  {
+    test: /\.svg$/,
+    use: [{
+      loader: 'svg-url-loader',
+      options: {
+        limit: 10000,
+      },
+    }],
   },
   {
     test: /\.css$/,

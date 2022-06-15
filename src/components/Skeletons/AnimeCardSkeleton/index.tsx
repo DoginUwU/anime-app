@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styles from './styles.module.css';
 
@@ -8,7 +9,7 @@ interface AnimeCardSkeletonProps {
 const AnimeCardSkeleton: React.FC<AnimeCardSkeletonProps> = ({ length = 6 }) => (
     <>
         {[...Array(length)].map((_, index) => (
-            <div className={styles.item} />
+            <div className={styles.item} key={index} />
         ))}
     </>
 );

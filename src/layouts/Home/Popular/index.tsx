@@ -1,14 +1,12 @@
 import React from 'react';
-import Empty from '../Empty';
-import styles from './styles.module.css';
+import AnimeCardsSection from '../../../components/AnimeCardsSection';
+import { useFetchPopular } from '../../../libs/query/get/popular';
 
-const Popular: React.FC = () => (
-    <div className={styles.list}>
-        <h1>Popular</h1>
-        <div className={styles.items}>
-            <Empty />
-        </div>
-    </div>
-);
+const Popular: React.FC = () => {
+    const { data, isLoading } = useFetchPopular();
+    const animes = data?.pages.flatMap((page) => page.items) || [];
+
+    return <AnimeCardsSection title="Popular" animes={animes} isLoading={isLoading} />;
+};
 
 export default Popular;

@@ -1,14 +1,6 @@
 import React from 'react';
-import Empty from '../Empty';
-import styles from './styles.module.css';
+import AnimeCardsSection from '../../../components/AnimeCardsSection';
 
-const Recomended: React.FC = () => (
-    <div className={styles.list}>
-        <h1>Recomended</h1>
-        <div className={styles.items}>
-            <Empty />
-        </div>
-    </div>
-);
+const Recomended: React.FC = () => <AnimeCardsSection title="Recomended" animes={[]} isLoading={false} />;
 
 export default Recomended;

@@ -6,7 +6,7 @@
 }
 
 .items {
-    @apply flex gap-2;
+    @apply flex gap-2 overflow-auto pb-2;
 }
 
 .item {

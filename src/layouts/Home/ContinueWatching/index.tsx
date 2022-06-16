@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatDistanceToNow } from 'date-fns';
 import { EpisodeData } from '../../../@types/storage';
 import Empty from '../Empty';
 import styles from './styles.module.css';
@@ -25,7 +26,7 @@ const ContinueWatching: React.FC = () => {
                                 <div className={styles.itemInfo}>
                                     <h2>{episode.anime.title}</h2>
                                     <p>
-                                        E{episode.episode} - T{episode.season} • 1 day ago
+                                        E{episode.episode} - T{episode.season} • {formatDistanceToNow(episode.date)}
                                     </p>
                                     <div className={styles.itemDuration}>{formatToMMSS(episode.duration)}</div>
                                 </div>

@@ -3,3 +3,7 @@
     -webkit-app-region: drag;
     @apply fixed top-0 left-0 w-screen h-8;
 }
+
+.content {
+    @apply flex flex-col p-8 pl-[14rem] pr-0 gap-8 w-full;
+}

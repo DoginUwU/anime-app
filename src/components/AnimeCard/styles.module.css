@@ -1,5 +1,5 @@
 .item {
-    @apply flex flex-col rounded-md overflow-hidden hover:cursor-pointer;
+    @apply flex flex-col rounded-md overflow-hidden hover:cursor-pointer min-w-[9rem] w-36;
 }
 .item:hover img {
     @apply transform scale-105;

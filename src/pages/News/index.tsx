@@ -23,7 +23,7 @@ const News: React.FC = () => {
                         loader={<AnimeCardSkeleton length={20} />}
                     >
                         {animes.map((anime) => (
-                            <AnimeCard anime={anime} />
+                            <AnimeCard anime={anime} key={anime.url} />
                         ))}
                     </InfiniteScroll>
                 )}

@@ -2,6 +2,8 @@
 /* eslint-disable no-param-reassign */
 import { app, ipcMain, protocol } from 'electron';
 import { BrowserWindow } from 'electron-acrylic-window';
+import Store from 'electron-store';
+import { storage } from './json/storage';
 
 let mainWindow: BrowserWindow | null;
 
@@ -13,6 +15,11 @@ process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
 //   process.env.NODE_ENV === 'production'
 //     ? process.resourcesPath
 //     : app.getAppPath()
+
+const store = new Store({
+    accessPropertiesByDotNotation: true,
+    schema: storage,
+});
 
 protocol.registerSchemesAsPrivileged([
     {
@@ -92,6 +99,22 @@ async function registerListeners() {
                 event.returnValue = undefined;
                 break;
         }
+    });
+
+    ipcMain.on('setStorage', (_, key, value) => {
+        store.set(key, value);
+    });
+
+    ipcMain.on('getStorage', (event, key) => {
+        event.returnValue = store.get(key);
+    });
+
+    ipcMain.on('removeStorage', (_, key) => {
+        store.delete(key);
+    });
+
+    ipcMain.on('clearStorage', () => {
+        store.clear();
     });
 }
 

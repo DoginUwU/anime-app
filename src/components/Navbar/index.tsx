@@ -30,7 +30,13 @@ const Navbar: React.FC = () => (
             ))}
         </div>
         <div className={styles.footer}>
-            <Button>Settings</Button>
+            <Button
+                onClick={() => {
+                    window.Main.clearStorage();
+                }}
+            >
+                Settings
+            </Button>
             <p>Anime-App v0.01</p>
         </div>
     </div>

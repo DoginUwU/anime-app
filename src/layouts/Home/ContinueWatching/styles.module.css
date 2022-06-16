@@ -6,11 +6,11 @@
 }
 
 .items {
-    @apply flex gap-2;
+    @apply flex gap-2 overflow-auto;
 }
 
 .item {
-    @apply flex flex-col rounded-md overflow-hidden hover:cursor-pointer;
+    @apply flex flex-col rounded-md overflow-hidden hover:cursor-pointer w-52;
 }
 .item:hover img {
     @apply transform scale-105;
@@ -22,7 +22,7 @@
     @apply bg-white text-black p-4 flex flex-col gap-2 relative;
 }
 .itemInfo h2 {
-    @apply text-sm font-bold text-black;
+    @apply text-sm font-bold text-black whitespace-nowrap overflow-hidden text-ellipsis;
 }
 .itemInfo p {
     @apply text-[10px] text-black/90;

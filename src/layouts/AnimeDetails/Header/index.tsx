@@ -22,6 +22,7 @@ const Header: React.FC<IHeaderProps> = ({ anime, children }) => (
                 state={{
                     episode: anime.seasons[0].episodes[0],
                     episodes: anime.seasons[0].episodes,
+                    anime,
                 }}
             >
                 <Button>Play</Button>

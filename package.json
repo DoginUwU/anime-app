@@ -19,6 +19,7 @@
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "electron-acrylic-window": "^0.5.11",
+    "electron-store": "^8.0.2",
     "fluid-player": "^3.0.4",
     "phosphor-react": "^1.4.1",
     "plyr-react": "^5.0.2",

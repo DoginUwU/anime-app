@@ -79,12 +79,14 @@ const Controls: React.FC<IControlsProps> = ({ episode, episodes, ...props }) => 
                 <input type="range" min="0" max="100" value={muted ? 0 : volume} onChange={handleChangeVolume} />
             </div>
             <div className={styles.controlsOptions}>
-                <Queue
-                    className={classNames({
-                        [styles.active]: showEpisodes,
-                    })}
-                    onClick={handleShowEpisodes}
-                />
+                {!!episodes.length && (
+                    <Queue
+                        className={classNames({
+                            [styles.active]: showEpisodes,
+                        })}
+                        onClick={handleShowEpisodes}
+                    />
+                )}
                 <ArrowsOutSimple onClick={handleFullscreen} />
             </div>
             <div
@@ -94,7 +96,7 @@ const Controls: React.FC<IControlsProps> = ({ episode, episodes, ...props }) => 
                 }}
             >
                 {episodes.map((e) => (
-                    <Link to="/player" state={{ episode: e, episodes }}>
+                    <Link to="/player" state={{ episode: e, episodes }} key={e.url}>
                         <div
                             key={e.url}
                             className={classNames({

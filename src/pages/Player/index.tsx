@@ -1,21 +1,26 @@
+/* eslint-disable consistent-return */
 import React, { createRef, useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { IAnimeEpisode } from '../../@types/anime';
+import { IAnimeEpisode, IAnimeGet } from '../../@types/anime';
 import Controls from '../../layouts/Player/Controls';
 import Loading from '../../layouts/Player/Loading';
+import Saver from '../../layouts/Player/Saver';
 import { getWatchSrc } from '../../libs/api/get/watch';
 import styles from './styles.module.css';
 
 interface IStateProps {
+    anime: IAnimeGet;
     episode: IAnimeEpisode;
     episodes: IAnimeEpisode[];
+    progress?: number;
 }
 
 const Player: React.FC = () => {
     const navigate = useNavigate();
     const { state } = useLocation();
     const [src, setSrc] = useState('');
+    const [anime, setAnime] = useState<IAnimeGet>();
     const [episode, setEpisode] = useState<IAnimeEpisode>();
     const [episodes, setEpisodes] = useState<IAnimeEpisode[]>([]);
     const [loading, setLoading] = useState(true);
@@ -30,11 +35,22 @@ const Player: React.FC = () => {
 
     useEffect(() => {
         if (!state) return;
-        const { episode: getEpisode, episodes: getEpisodes } = state as IStateProps;
+        const {
+            episode: getEpisode,
+            episodes: getEpisodes,
+            anime: getAnime,
+            progress: getProgress,
+        } = state as IStateProps;
 
         setSrc(getWatchSrc(getEpisode.url));
+        setAnime(getAnime);
         setEpisode(getEpisode);
         setEpisodes(getEpisodes);
+        setProgress(getProgress || 0);
+
+        return () => {
+            clearTimeout(timer.current);
+        };
     }, [state]);
 
     useEffect(() => {
@@ -76,6 +92,8 @@ const Player: React.FC = () => {
         }, 5000);
     };
 
+    const getProgress = () => progress / duration;
+
     return (
         <div
             className={styles.container}
@@ -97,6 +115,7 @@ const Player: React.FC = () => {
                 onProgress={handleProgress}
                 onReady={handleReady}
             />
+            {episode && anime && <Saver episode={episode} progress={getProgress()} duration={duration} anime={anime} />}
             {episode && (
                 <Controls
                     episode={episode}

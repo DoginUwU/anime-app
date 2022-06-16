@@ -1,0 +1,16 @@
+.container {
+    @apply flex gap-4 items-center;
+}
+.container img {
+    @apply h-12 w-12 object-cover;
+}
+
+.content {
+    @apply flex flex-col;
+}
+.content h1 {
+    @apply text-sm font-thin;
+}
+.content p {
+    @apply text-sm font-thin;
+}

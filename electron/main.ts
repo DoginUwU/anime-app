@@ -52,7 +52,7 @@ function createWindow() {
         // icon: path.join(assetsPath, 'assets', 'icon.png'),
         width: 1066,
         height: 685.69,
-        transparent: true,
+        transparent: false,
         frame: false,
         backgroundColor: '#14121c',
         roundedCorners: true,

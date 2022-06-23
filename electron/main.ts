@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable no-param-reassign */
-import { app, ipcMain, protocol } from 'electron';
-import { BrowserWindow } from 'electron-acrylic-window';
+import { app, ipcMain, protocol, BrowserWindow } from 'electron';
 import Store from 'electron-store';
 import { storage } from './json/storage';
 
@@ -58,10 +57,6 @@ function createWindow() {
         roundedCorners: true,
         thickFrame: true,
         resizable: false,
-        vibrancy: {
-            theme: 'dark',
-            effect: 'acrylic',
-        },
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,

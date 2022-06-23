@@ -3,7 +3,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import HomeLayout from './layouts/Home/HomeLayout';
 import AnimeDetails from './pages/AnimeDetails';
 import Home from './pages/Home';
-import News from './pages/News';
+import Latest from './pages/Latest';
 import Player from './pages/Player';
 import Search from './pages/Search';
 
@@ -20,7 +20,7 @@ export const App = () => (
                     <Route path="/main_window" element={<Home />} />
                     <Route path="/search/:query" element={<Search />} />
                     <Route path="/anime" element={<AnimeDetails />} />
-                    <Route path="news" element={<News />} />
+                    <Route path="/latest" element={<Latest />} />
                     <Route path="*" element={<Home />} />
                 </Route>
                 <Route path="/player" element={<Player />} />

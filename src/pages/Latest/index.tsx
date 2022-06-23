@@ -5,13 +5,13 @@ import AnimeCardSkeleton from '../../components/Skeletons/AnimeCardSkeleton';
 import { useFetchNews } from '../../libs/query/get/news';
 import styles from './styles.module.css';
 
-const News: React.FC = () => {
+const Latest: React.FC = () => {
     const { data, isLoading, fetchNextPage, hasNextPage } = useFetchNews();
     const animes = data?.pages.flatMap((page) => page.items);
 
     return (
         <main className={styles.container}>
-            <h1>News</h1>
+            <h1>Latest</h1>
             <div className={styles.items}>
                 {isLoading && <AnimeCardSkeleton length={20} />}
                 {animes && (
@@ -32,4 +32,4 @@ const News: React.FC = () => {
     );
 };
 
-export default News;
+export default Latest;

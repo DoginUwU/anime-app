@@ -22,8 +22,8 @@ const menu: IMenu[] = [
                 icon: House,
             },
             {
-                name: 'News',
-                link: '/news',
+                name: 'Latest',
+                link: '/latest',
                 icon: Broadcast,
             },
             {

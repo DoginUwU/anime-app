@@ -2,11 +2,11 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import AnimeCard from '../../components/AnimeCard';
 import AnimeCardSkeleton from '../../components/Skeletons/AnimeCardSkeleton';
-import { useFetchNews } from '../../libs/query/get/news';
+import { useFetchLatest } from '../../libs/query/get/latest';
 import styles from './styles.module.css';
 
 const Latest: React.FC = () => {
-    const { data, isLoading, fetchNextPage, hasNextPage } = useFetchNews();
+    const { data, isLoading, fetchNextPage, hasNextPage } = useFetchLatest();
     const animes = data?.pages.flatMap((page) => page.items);
 
     return (

@@ -1,9 +1,9 @@
 import { ISearchGet } from '../../../@types/search';
 import { api } from '../axios';
 
-const getNewsAnime = async (page?: number): Promise<ISearchGet> => {
+const getLatestAnimes = async (page?: number): Promise<ISearchGet> => {
     const response = (
-        await api.get<ISearchGet>('news', {
+        await api.get<ISearchGet>('latest/animes', {
             params: {
                 site: 'AnimesOnline',
                 page,
@@ -14,4 +14,4 @@ const getNewsAnime = async (page?: number): Promise<ISearchGet> => {
     return response;
 };
 
-export { getNewsAnime };
+export { getLatestAnimes };

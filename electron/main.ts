@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { app, ipcMain, protocol, BrowserWindow } from 'electron';
 import Store from 'electron-store';
+import { ENVIRONMENTS } from './environment';
 import { storage } from './json/storage';
 
 let mainWindow: BrowserWindow | null;
@@ -9,11 +10,6 @@ let mainWindow: BrowserWindow | null;
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
-
-// const assetsPath =
-//   process.env.NODE_ENV === 'production'
-//     ? process.resourcesPath
-//     : app.getAppPath()
 
 const store = new Store({
     accessPropertiesByDotNotation: true,
@@ -73,27 +69,15 @@ function createWindow() {
 }
 
 async function registerListeners() {
-    /**
-     * This comes from bridge integration, check bridge.ts
-     */
-    ipcMain.on('message', (_, message) => {
-        console.log(message);
-    });
+    ipcMain.on('message', () => {});
 
-    ipcMain.on('getEnvironment', (event, name) => {
-        switch (name) {
-            case 'API_URL':
-                if (process.env.NODE_ENV === 'development') {
-                    event.returnValue = 'http://localhost:3333';
-                    break;
-                }
-
-                event.returnValue = 'http://144.22.160.67:1521';
-                break;
-            default:
-                event.returnValue = undefined;
-                break;
+    ipcMain.on('getEnvironment', (event) => {
+        if (!process.env.NODE_ENV) {
+            event.returnValue = undefined;
+            return;
         }
+
+        event.returnValue = ENVIRONMENTS[process.env.NODE_ENV as keyof typeof ENVIRONMENTS];
     });
 
     ipcMain.on('setStorage', (_, key, value) => {
@@ -116,7 +100,9 @@ async function registerListeners() {
 app.on('ready', createWindow)
     .whenReady()
     .then(registerListeners)
-    .catch((e) => console.error(e));
+    .catch((e) => {
+        throw new Error(e);
+    });
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

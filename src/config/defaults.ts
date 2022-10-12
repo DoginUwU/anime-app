@@ -1,3 +1,3 @@
-const API_URL = window.Main.getEnvironment('API_URL') || 'http://localhost:3333';
+const { API_URL } = window.Main.getEnvironment();
 
 export { API_URL };

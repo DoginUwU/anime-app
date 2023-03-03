@@ -59,7 +59,7 @@ const Controls: React.FC<IControlsProps> = ({ episode, episodes, ...props }) => 
                 <ArrowLeft size={32} onClick={onGoBack} />
             </div>
             <div className={styles.controlsTitle}>
-                <img src={episode?.image} alt={episode?.title} />
+                {episode.image && <img src={episode.image} alt={episode.title} />}
                 <h1>{episode?.title}</h1>
             </div>
             <div className={styles.controlsCommands}>

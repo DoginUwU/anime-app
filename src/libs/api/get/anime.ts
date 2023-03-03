@@ -5,7 +5,7 @@ const getAnimeByUrl = async (url: string): Promise<IAnimeGet> => {
     const response = (
         await api.get<IAnimeGet>('anime', {
             params: {
-                site: 'AnimesOnline',
+                site: 'AnimeFire',
                 url,
             },
         })

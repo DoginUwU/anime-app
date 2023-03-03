@@ -9,6 +9,7 @@ interface IListProps {
 
 const List: React.FC<IListProps> = ({ anime }) => (
     <div className={styles.container}>
+        {anime.seasons.length === 0 && <h1>Nenhum episódio encontrado</h1>}
         {anime.seasons.map((season) => (
             <div key={season.title}>
                 <h1>{season.title}</h1>

@@ -3,7 +3,7 @@ const ENVIRONMENTS = {
         API_URL: 'http://localhost:3333',
     },
     production: {
-        API_URL: 'http://teste.com',
+        API_URL: 'https://anime-app-back.onrender.com',
     },
 };
 

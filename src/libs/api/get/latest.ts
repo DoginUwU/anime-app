@@ -5,7 +5,7 @@ const getLatestAnimes = async (page?: number): Promise<ISearchGet> => {
     const response = (
         await api.get<ISearchGet>('latest/animes', {
             params: {
-                site: 'AnimesOnline',
+                site: 'AnimeFire',
                 page,
             },
         })

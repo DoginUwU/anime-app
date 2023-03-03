@@ -17,16 +17,18 @@ const Header: React.FC<IHeaderProps> = ({ anime, children }) => (
         </div>
         <div className={styles.headerRight}>
             <img src={anime.image} alt={anime.title} />
-            <Link
-                to="/player"
-                state={{
-                    episode: anime.seasons[0].episodes[0],
-                    episodes: anime.seasons[0].episodes,
-                    anime,
-                }}
-            >
-                <Button>Play</Button>
-            </Link>
+            {anime.seasons.length && anime.seasons[0].episodes.length === 0 && (
+                <Link
+                    to="/player"
+                    state={{
+                        episode: anime.seasons[0].episodes[0],
+                        episodes: anime.seasons[0].episodes,
+                        anime,
+                    }}
+                >
+                    <Button>Play</Button>
+                </Link>
+            )}
         </div>
     </div>
 );

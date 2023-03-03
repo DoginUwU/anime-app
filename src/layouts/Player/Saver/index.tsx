@@ -23,7 +23,12 @@ const Saver: React.FC<IProps> = ({ episode, progress, duration, anime }) => {
 
         episodes.push(saveEpisode);
 
-        episodes = episodes.sort((a, b) => b.date - a.date);
+        episodes = episodes
+            .sort((a, b) => b.date - a.date)
+            .map((e) => ({
+                ...e,
+                image: e.image || anime.image,
+            }));
 
         window.Main.setStorage<EpisodeData[]>('continueWatching.episodes', episodes);
     };

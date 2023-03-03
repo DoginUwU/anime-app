@@ -5,7 +5,7 @@ const getPopularAnime = async (page?: number): Promise<ISearchGet> => {
     const response = (
         await api.get<ISearchGet>('popular', {
             params: {
-                site: 'AnimesOnline',
+                site: 'AnimeFire',
                 page,
             },
         })

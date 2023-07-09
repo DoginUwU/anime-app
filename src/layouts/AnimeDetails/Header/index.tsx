@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 import { IAnimeGet } from '../../../@types/anime';
 import Button from '../../../components/Button';
@@ -8,7 +8,7 @@ interface IHeaderProps {
     anime: IAnimeGet;
 }
 
-const Header: React.FC<IHeaderProps> = ({ anime, children }) => (
+const Header = ({ anime, children }: PropsWithChildren<IHeaderProps>) => (
     <div className={styles.container}>
         <div className={styles.headerLeft}>
             <h1>{anime.title}</h1>

@@ -7,3 +7,15 @@
 .content {
     @apply flex flex-col p-8 pl-[14rem] pr-0 gap-8 w-full;
 }
+
+.main {
+    @apply relative;
+}
+
+.background {
+    @apply fixed top-0 left-0 w-screen h-screen;
+    background-color: #423c5a80;
+    backdrop-filter: blur(33px);
+    background-blend-mode: overlay;
+    z-index: -1;
+}

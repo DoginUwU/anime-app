@@ -47,9 +47,9 @@ function createWindow() {
         // icon: path.join(assetsPath, 'assets', 'icon.png'),
         width: 1066,
         height: 685.69,
-        transparent: false,
+        transparent: true,
         frame: false,
-        backgroundColor: '#14121c',
+        backgroundColor: '#423c5a80',
         roundedCorners: true,
         thickFrame: true,
         resizable: false,
@@ -58,6 +58,7 @@ function createWindow() {
             contextIsolation: true,
             preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
             webSecurity: false,
+            experimentalFeatures: true,
         },
     });
 

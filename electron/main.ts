@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable no-param-reassign */
-import { app, ipcMain, protocol, BrowserWindow } from 'electron';
+import { BrowserWindow } from 'electron-acrylic-window'
+import { app, ipcMain, protocol } from 'electron';
 import Store from 'electron-store';
 import { ENVIRONMENTS } from './environment';
 import { storage } from './json/storage';
@@ -47,7 +48,13 @@ function createWindow() {
         // icon: path.join(assetsPath, 'assets', 'icon.png'),
         width: 1066,
         height: 685.69,
-        transparent: true,
+        // transparent: true,
+        vibrancy: {
+            theme: 'dark',
+            effect: 'acrylic',
+            useCustomWindowRefreshMethod: true,
+            disableOnBlur: true,
+        },
         frame: false,
         backgroundColor: '#423c5a80',
         roundedCorners: true,

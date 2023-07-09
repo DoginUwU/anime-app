@@ -1,5 +1,5 @@
 .container {
-    @apply w-screen h-screen bg-black;
+    @apply w-screen h-screen bg-background/20;
 }
 
 .container:hover .controls {

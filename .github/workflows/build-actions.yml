@@ -19,7 +19,7 @@ jobs:
           npm install --global node-gyp@latest
           npm prefix -g | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gyp.js"}
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --force
       - name: Build
         run: npm run make --platform win32
       - name: Generate Changelog

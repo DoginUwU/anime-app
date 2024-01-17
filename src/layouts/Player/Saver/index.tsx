@@ -11,7 +11,7 @@ interface IProps {
 
 const Saver: React.FC<IProps> = ({ episode, progress, duration, anime }) => {
     const addEpisode = (saveEpisode: EpisodeData) => {
-        let episodes = window.Main.getStorage<EpisodeData[] | undefined>('continueWatching.episodes') || [];
+        let episodes = window.ipcRenderer.getStorage<EpisodeData[] | undefined>('continueWatching.episodes') || [];
 
         if (episodes.length > 20) episodes = episodes.slice(0, 1);
 
@@ -30,7 +30,7 @@ const Saver: React.FC<IProps> = ({ episode, progress, duration, anime }) => {
                 image: e.image || anime.image,
             }));
 
-        window.Main.setStorage<EpisodeData[]>('continueWatching.episodes', episodes);
+        window.ipcRenderer.setStorage<EpisodeData[]>('continueWatching.episodes', episodes);
     };
 
     useEffect(() => {

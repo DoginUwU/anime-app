@@ -17,7 +17,7 @@ const Episode: React.FC<IProps> = ({ anime, episode, season }) => {
     const [progress, setProgress] = useState(0);
 
     const checkEpisode = () => {
-        const episodes = window.Main.getStorage<EpisodeData[] | undefined>('continueWatching.episodes') || [];
+        const episodes = window.ipcRenderer.getStorage<EpisodeData[] | undefined>('continueWatching.episodes') || [];
 
         const ep = episodes.find((e) => e.url === episode.url);
 

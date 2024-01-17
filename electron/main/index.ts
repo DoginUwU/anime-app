@@ -3,9 +3,17 @@ import { release } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { update } from './update'
+import Store from 'electron-store';
+import { storage } from './json/storage';
+import { ENVIRONMENTS } from './environment';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+
+const store = new Store({
+  accessPropertiesByDotNotation: true,
+  schema: storage,
+});
 
 process.env.DIST_ELECTRON = join(__dirname, '../')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
@@ -35,6 +43,11 @@ async function createWindow() {
     icon: join(process.env.VITE_PUBLIC, 'favicon.ico'),
     width: 1066,
     height: 685.69,
+    frame: false,
+    backgroundColor: '#423c5a80',
+    roundedCorners: true,
+    thickFrame: true,
+    resizable: false,
     webPreferences: {
       preload,
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
@@ -67,9 +80,39 @@ async function createWindow() {
 
   // Apply electron-updater
   update(win)
+  registerListeners()
 }
 
 app.whenReady().then(createWindow)
+
+async function registerListeners() {
+  ipcMain.on('message', () => {});
+
+  ipcMain.on('getEnvironment', (event) => {
+      if (!process.env.NODE_ENV) {
+          event.returnValue = undefined;
+          return;
+      }
+
+      event.returnValue = ENVIRONMENTS[process.env.NODE_ENV as keyof typeof ENVIRONMENTS];
+  });
+
+  ipcMain.on('setStorage', (_, key, value) => {
+      store.set(key, value);
+  });
+
+  ipcMain.on('getStorage', (event, key) => {
+      event.returnValue = store.get(key);
+  });
+
+  ipcMain.on('removeStorage', (_, key) => {
+      store.delete(key);
+  });
+
+  ipcMain.on('clearStorage', () => {
+      store.clear();
+  });
+}
 
 app.on('window-all-closed', () => {
   win = null

@@ -1,6 +1,6 @@
 /* eslint-disable no-empty-pattern */
 import { Schema } from 'electron-store';
-import { StorageData } from '../../src/@types/storage';
+import { StorageData } from '../../../src/@types/storage';
 
 export const storage: Schema<StorageData> = {
     continue_watching: {

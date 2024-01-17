@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import { ENVIRONMENTS } from './environment';
+import { ENVIRONMENTS } from './main/environment';
 
-export const api = {
+export const ipcBridge = {
     sendMessage: (message: string) => {
         ipcRenderer.send('message', message);
     },
@@ -21,4 +21,3 @@ export const api = {
     },
 };
 
-contextBridge.exposeInMainWorld('Main', api);

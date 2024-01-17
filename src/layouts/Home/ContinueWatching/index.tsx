@@ -7,7 +7,7 @@ import styles from './styles.module.css';
 import { formatToMMSS } from '../../../utils/time';
 
 const ContinueWatching: React.FC = () => {
-    const episodes = window.Main.getStorage<EpisodeData[] | undefined>('continueWatching.episodes');
+    const episodes = window.ipcRenderer.getStorage<EpisodeData[] | undefined>('continueWatching.episodes');
 
     return (
         <div className={styles.list}>

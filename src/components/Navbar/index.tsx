@@ -32,7 +32,7 @@ const Navbar: React.FC = () => (
         <div className={styles.footer}>
             <Button
                 onClick={() => {
-                    window.Main.clearStorage();
+                    window.ipcRenderer.clearStorage();
                 }}
             >
                 Settings

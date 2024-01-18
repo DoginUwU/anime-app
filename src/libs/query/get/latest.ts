@@ -5,6 +5,6 @@ import { getLatestAnimes } from '../../api/get/latest';
 export const useFetchLatest = () =>
     useInfiniteQuery('latest', ({ pageParam }) => getLatestAnimes(pageParam), {
         staleTime: TIME_FETCH_NEWS,
-        getNextPageParam: (lastPage) => lastPage.page + 1,
+        getNextPageParam: (lastPage) => lastPage.hasNext ? lastPage.page + 1 : null,
         getPreviousPageParam: (lastPage) => lastPage.page - 1,
     });
